@@ -24,5 +24,5 @@ interface PipelineContract
      * @param string $name
      * @return mixed
      */
-    public function job(string $name): Job;
+    public function job(string $name): Pipeline;
 }

@@ -8,20 +8,29 @@ use Lightit\Automizr\Contracts\PipelineContract;
 
 class Pipeline implements PipelineContract
 {
+    /** @var string $image */
+    private $image;
+
+    /** @var array $jobs */
+    private $jobs = [];
 
     /**
      * @inheritDoc
      */
     public function using(string $image): Pipeline
     {
-        // TODO: Implement using() method.
+        $this->image = $image;
+
+        return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function job(string $name): Job
+    public function job(string $name): Pipeline
     {
-        // TODO: Implement job() method.
+        array_push($this->jobs, new Job($name));
+
+        return $this;
     }
 }
