@@ -11,4 +11,11 @@ use Lightit\Automizr\Contracts\AutomizrContract;
  */
 class Automizr implements AutomizrContract
 {
+    /**
+     * @inheritDoc
+     */
+    public function pipeline(string $name): Pipeline
+    {
+        // TODO: Implement pipeline() method.
+    }
 }

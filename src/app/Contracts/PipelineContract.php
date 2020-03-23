@@ -3,6 +3,7 @@
 
 namespace Lightit\Automizr\Contracts;
 
+use Lightit\Automizr\Job;
 use Lightit\Automizr\Pipeline;
 
 /**
@@ -23,5 +24,5 @@ interface PipelineContract
      * @param string $name
      * @return mixed
      */
-    public function job(string $name);
+    public function job(string $name): Job;
 }
