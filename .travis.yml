@@ -1,0 +1,19 @@
+# .travis.yml
+dist: bionic
+
+language: php
+
+php:
+  - 7.2
+
+cache:
+  directories:
+    - node_modules
+    - vendor
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit tests/app

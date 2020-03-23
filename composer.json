@@ -1,0 +1,36 @@
+{
+    "name": "lightit/automizr",
+    "description": "Write once, run everywhere with Laravel Automizr",
+    "keywords": ["ci", "cd", "pipelines", "automizr", "continuous-integration", "continuous-delivery"],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "illuminate/support": "5.8.*|^6.0|^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.8.4|^4.0",
+        "phpspec/phpspec": "^6.1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lightit\\Automizr\\": "src/app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lightit\\Automizr\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lightit\\Automizr\\Providers\\AutomizrServiceProvider"
+            ],
+            "aliases": {
+                "GJob": "Lightit\\Automizr\\Facades\\Automizr"
+            }
+        }
+    }
+}
