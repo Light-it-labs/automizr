@@ -3,6 +3,7 @@
 
 namespace Lightit\Automizr\Contracts;
 
+use Closure;
 use Lightit\Automizr\Job;
 use Lightit\Automizr\Pipeline;
 
@@ -22,7 +23,8 @@ interface PipelineContract
     /**
      * Defines a new Job instance
      * @param string $name
+     * @param Closure $closure
      * @return mixed
      */
-    public function job(string $name): Pipeline;
+    public function job(string $name, Closure $closure): Pipeline;
 }

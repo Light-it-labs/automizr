@@ -4,6 +4,7 @@
 namespace Lightit\Automizr;
 
 
+use Closure;
 use Lightit\Automizr\Contracts\JobContract;
 
 class Job implements JobContract
@@ -11,16 +12,21 @@ class Job implements JobContract
     /** @var string $name */
     private $name;
 
-    public function __construct(string $name)
+    /** @var array $steps */
+    private $steps;
+
+    public function __construct(string $name, Closure $steps)
     {
         $this->name = $name;
+        $this->steps = $steps($this->newStep());
     }
 
     /**
-     * @inheritDoc
+     * Step factory
+     * @return Step
      */
-    public function step(string $name): Step
+    private function newStep(): Step
     {
-        // TODO: Implement step() method.
+        return new Step();
     }
 }

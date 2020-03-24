@@ -4,6 +4,7 @@
 namespace Lightit\Automizr;
 
 
+use Closure;
 use Lightit\Automizr\Contracts\PipelineContract;
 
 class Pipeline implements PipelineContract
@@ -27,9 +28,9 @@ class Pipeline implements PipelineContract
     /**
      * @inheritDoc
      */
-    public function job(string $name): Pipeline
+    public function job(string $name, Closure $closure): Pipeline
     {
-        array_push($this->jobs, new Job($name));
+        array_push($this->jobs, new Job($name, $closure));
 
         return $this;
     }
