@@ -8,13 +8,17 @@ use Lightit\Automizr\Contracts\StepContract;
 
 class Step implements StepContract
 {
+    /** @var array $commands */
+    private $commands;
 
     /**
      * @inheritDoc
      */
     public function command(string $command): Step
     {
-        // TODO: Implement command() method.
+        array_push($this->commands, $command);
+
+        return $this;
     }
 
     /**
@@ -22,6 +26,16 @@ class Step implements StepContract
      */
     public function commands(array $commands): Step
     {
-        // TODO: Implement commands() method.
+        array_merge($this->commands, $commands);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function recipe(): array
+    {
+        return $this->commands;
     }
 }

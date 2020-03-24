@@ -21,4 +21,10 @@ interface StepContract
      * @return Step
      */
     public function commands(array $commands): Step;
+
+    /**
+     * Return all the step commands
+     * @return array
+     */
+    public function recipe(): array;
 }
