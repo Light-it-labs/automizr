@@ -27,4 +27,10 @@ interface PipelineContract
      * @return mixed
      */
     public function job(string $name, Closure $closure): Pipeline;
+
+    /**
+     * Return all defined jobs
+     * @return array
+     */
+    public function jobs(): array;
 }

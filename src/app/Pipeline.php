@@ -34,4 +34,12 @@ class Pipeline implements PipelineContract
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function jobs(): array
+    {
+        return $this->jobs;
+    }
 }

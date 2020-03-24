@@ -9,7 +9,7 @@ use Lightit\Automizr\Contracts\StepContract;
 class Step implements StepContract
 {
     /** @var array $commands */
-    private $commands;
+    private $commands = [];
 
     /**
      * @inheritDoc
