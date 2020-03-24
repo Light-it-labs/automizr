@@ -16,6 +16,6 @@ class Automizr implements AutomizrContract
      */
     public function pipeline(string $name): Pipeline
     {
-        // TODO: Implement pipeline() method.
+        return new Pipeline();
     }
 }
