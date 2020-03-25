@@ -29,7 +29,7 @@
                 "Lightit\\Automizr\\Providers\\AutomizrServiceProvider"
             ],
             "aliases": {
-                "GJob": "Lightit\\Automizr\\Facades\\Automizr"
+                "Automizr": "Lightit\\Automizr\\Facades\\Automizr"
             }
         }
     }
