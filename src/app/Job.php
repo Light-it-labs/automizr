@@ -29,4 +29,12 @@ class Job implements JobContract
     {
         return new Step();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function steps(): array
+    {
+        return $this->steps;
+    }
 }

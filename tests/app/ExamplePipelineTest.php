@@ -15,7 +15,11 @@ class ExamplePipelineTest extends BaseTest
 
         // Check pipeline data
         $jobs = $pipeline->instance()->jobs();
+        $firstJobSteps = $jobs[0]->steps();
+        $secondJobSteps = $jobs[1]->steps();
 
         $this->assertCount(2, $jobs);
+        $this->assertCount(2, $firstJobSteps);
+        $this->assertCount(1, $secondJobSteps);
     }
 }
