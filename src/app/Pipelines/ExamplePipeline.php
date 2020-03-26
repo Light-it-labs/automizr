@@ -29,7 +29,7 @@ class ExamplePipeline extends Automizr
                 $step->command('echo Hello World');
 
                 return $step->recipe();
-            })->job('Install Dependencies', function (Step $step) {
+            }, 'ubuntu:18.04')->job('Install Dependencies', function (Step $step) {
                 $step->command('npm install');
 
                 return $step->recipe();
