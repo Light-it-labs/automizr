@@ -26,8 +26,9 @@ class BaseTranslator
 
     /**
      * Generates a yaml representation of the pipeline body
+     * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         return yaml_emit($this->body);
     }
