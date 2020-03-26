@@ -13,8 +13,8 @@ use stdClass;
  */
 class BaseTranslator
 {
-    /** @var stdClass $body  */
-    protected $body = null;
+    /** @var array $body  */
+    protected $body = [];
 
     /** @var Automizr $pipeline */
     protected $pipeline;

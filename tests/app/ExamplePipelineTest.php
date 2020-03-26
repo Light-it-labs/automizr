@@ -19,7 +19,8 @@ class ExamplePipelineTest extends BaseTest
         $firstJobSteps = $jobs[0]->steps();
         $secondJobSteps = $jobs[1]->steps();
 
-        //die(var_dump(new CircleCiTranslator($pipeline)));
+        $translator = new CircleCiTranslator($pipeline);
+        die($translator->generate());
 
         $this->assertCount(2, $jobs);
         $this->assertCount(2, $firstJobSteps);
