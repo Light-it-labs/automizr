@@ -24,7 +24,6 @@ class ExamplePipeline extends Automizr
     private function boot(): void
     {
         $this->examplePipeline = $this->pipeline('Continuous Integration - Delivery Pipeline')
-            ->using('ubuntu:18.04')
             ->job('Clone Repository', function(Step $step) {
                 $step->command('git clone https://github.com/test.git');
                 $step->command('echo Hello World');

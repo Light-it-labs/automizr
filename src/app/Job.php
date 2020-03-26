@@ -15,10 +15,14 @@ class Job implements JobContract
     /** @var array $steps */
     private $steps;
 
-    public function __construct(string $name, Closure $steps)
+    /** @var string image */
+    private $image = null;
+
+    public function __construct(string $name, Closure $steps, string $image = null)
     {
         $this->name = $name;
         $this->steps = $steps($this->newStep());
+        $this->image = $image;
     }
 
     /**
