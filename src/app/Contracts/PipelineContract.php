@@ -24,9 +24,10 @@ interface PipelineContract
      * Defines a new Job instance
      * @param string $name
      * @param Closure $closure
+     * @param string $image
      * @return mixed
      */
-    public function job(string $name, Closure $closure): Pipeline;
+    public function job(string $name, Closure $closure, string $image): Pipeline;
 
     /**
      * Return all defined jobs

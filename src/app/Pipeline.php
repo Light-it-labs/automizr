@@ -28,9 +28,9 @@ class Pipeline implements PipelineContract
     /**
      * @inheritDoc
      */
-    public function job(string $name, Closure $closure): Pipeline
+    public function job(string $name, Closure $closure, string $image): Pipeline
     {
-        array_push($this->jobs, new Job($name, $closure));
+        array_push($this->jobs, new Job($name, $closure, $image));
 
         return $this;
     }
