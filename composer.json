@@ -7,7 +7,8 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
-        "illuminate/support": "5.8.*|^6.0|^7.0"
+        "illuminate/support": "5.8.*|^6.0|^7.0",
+        "ext-yaml": "*"
     },
     "require-dev": {
         "orchestra/testbench": "~3.8.4|^4.0",
