@@ -13,4 +13,10 @@ interface JobContract
      * @return array
      */
     public function steps(): array;
+
+    /**
+     * Return the current job docker image
+     * @return string|null
+     */
+    public function image(): ?string;
 }

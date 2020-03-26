@@ -41,4 +41,12 @@ class Job implements JobContract
     {
         return $this->steps;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function image(): ?string
+    {
+        return $this->image;
+    }
 }
