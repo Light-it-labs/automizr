@@ -34,15 +34,21 @@ class CircleCiTranslator extends BaseTranslator
                         ]
                     ],
                     'steps' => [
-                        [
-                            'checkout'
-                        ],
+                        'checkout',
                         [
                             'run' => [
                                 'name' => 'Install CURL',
                                 'command' => 'apt update && apt install curl -y'
                             ]
                         ]
+                    ]
+                ]
+            ],
+            'workflows' => [
+                'version' => '2',
+                'install_dependencies_and_build' => [
+                    'jobs' => [
+                        'build'
                     ]
                 ]
             ]
