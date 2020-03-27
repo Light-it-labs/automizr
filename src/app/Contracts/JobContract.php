@@ -18,7 +18,7 @@ interface JobContract
      * Return the current job name
      * @return string
      */
-    private function name(): string;
+    public function name(): string;
 
     /**
      * Return the current job docker image
