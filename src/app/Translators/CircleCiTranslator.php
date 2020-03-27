@@ -3,6 +3,7 @@
 
 namespace Lightit\Automizr\Translators;
 
+use Lightit\Automizr\Job;
 use Lightit\Automizr\Pipeline;
 
 /**
@@ -23,35 +24,9 @@ class CircleCiTranslator extends BaseTranslator
      */
     private function design(): void
     {
-        $jobs = $this->prepareJobs();
         $this->body = [
             'version' => '2',
-            'jobs' => [
-                'build' => [
-                    'docker' => [
-                        [
-                            'image' => 'ubuntu:18.04'
-                        ]
-                    ],
-                    'steps' => [
-                        'checkout',
-                        [
-                            'run' => [
-                                'name' => 'Install CURL',
-                                'command' => 'apt update && apt install curl -y'
-                            ]
-                        ]
-                    ]
-                ]
-            ],
-            'workflows' => [
-                'version' => '2',
-                'install_dependencies_and_build' => [
-                    'jobs' => [
-                        'build'
-                    ]
-                ]
-            ]
+            'jobs' => $this->prepareJobs()
         ];
     }
 
@@ -63,7 +38,33 @@ class CircleCiTranslator extends BaseTranslator
     {
         $jobs = [];
         foreach($this->pipeline->jobs() as $job) {
-            
+            /** @var Job $job */
+            // Set initial job names
+            $jobs[$job->name()] = $job->name();
+            // Insert docker image details
+            if($job->image() !== null) {
+                $jobs[$job->name()] = [
+                    'docker' => [
+                        'image' => $job->image()
+                    ],
+                    'steps' => []
+                ];
+            }
+            // Job steps
+            // If a docker image has not been specified
+            if(! isset($jobs[$job->name()]['docker'])) {
+                // Create steps key
+                $jobs[$job->name()]['steps'] = [];
+            }
+            array_push($jobs[$job->name()]['steps'], [
+                'checkout' => [],
+                'run' => [
+                    'name' => 'Install CURL',
+                    'command' => 'apt update && apt install curl -y'
+                ]
+            ]);
         }
+
+        return $jobs;
     }
 }
