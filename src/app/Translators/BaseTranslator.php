@@ -3,8 +3,7 @@
 
 namespace Lightit\Automizr\Translators;
 
-use Lightit\Automizr\Automizr;
-use stdClass;
+use Lightit\Automizr\Pipeline;
 
 /**
  * A translator is the class that transforms an Automizr Pipeline into a Service defined pipeline
@@ -16,10 +15,10 @@ class BaseTranslator
     /** @var array $body  */
     protected $body = [];
 
-    /** @var Automizr $pipeline */
+    /** @var Pipeline $pipeline */
     protected $pipeline;
 
-    public function __construct(Automizr $pipeline)
+    public function __construct(Pipeline $pipeline)
     {
         $this->pipeline = $pipeline;
     }

@@ -33,7 +33,7 @@ class ExamplePipeline extends Automizr
                 $step->command('npm install');
 
                 return $step->recipe();
-            });
+            }, 'ubuntu:18.04');
     }
 
     /**

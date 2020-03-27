@@ -3,8 +3,7 @@
 
 namespace Lightit\Automizr\Translators;
 
-
-use Lightit\Automizr\Automizr;
+use Lightit\Automizr\Pipeline;
 
 /**
  * Transforms an Automizr pipeline into a CircleCi compatible pipeline
@@ -13,7 +12,7 @@ use Lightit\Automizr\Automizr;
  */
 class CircleCiTranslator extends BaseTranslator
 {
-    public function __construct(Automizr $pipeline)
+    public function __construct(Pipeline $pipeline)
     {
         parent::__construct($pipeline);
         $this->design();
@@ -24,6 +23,7 @@ class CircleCiTranslator extends BaseTranslator
      */
     private function design(): void
     {
+        $jobs = $this->prepareJobs();
         $this->body = [
             'version' => '2',
             'jobs' => [
@@ -53,5 +53,17 @@ class CircleCiTranslator extends BaseTranslator
                 ]
             ]
         ];
+    }
+
+    /**
+     * Return an array of the current pipeline jobs with the translator format
+     * @return array
+     */
+    private function prepareJobs(): array
+    {
+        $jobs = [];
+        foreach($this->pipeline->jobs() as $job) {
+            
+        }
     }
 }

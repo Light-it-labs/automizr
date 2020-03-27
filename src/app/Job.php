@@ -49,4 +49,12 @@ class Job implements JobContract
     {
         return $this->image;
     }
+
+    /**
+     * @inheritDoc
+     */
+    private function name(): string
+    {
+        // TODO: Implement name() method.
+    }
 }
