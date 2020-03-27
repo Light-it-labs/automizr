@@ -53,8 +53,8 @@ class Job implements JobContract
     /**
      * @inheritDoc
      */
-    private function name(): string
+    public function name(): string
     {
-        // TODO: Implement name() method.
+        return $this->name;
     }
 }
