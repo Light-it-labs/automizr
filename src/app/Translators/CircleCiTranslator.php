@@ -25,7 +25,27 @@ class CircleCiTranslator extends BaseTranslator
     private function design(): void
     {
         $this->body = [
-            'version' => '2.1'
+            'version' => '2',
+            'jobs' => [
+                'build' => [
+                    'docker' => [
+                        [
+                            'image' => 'ubuntu:18.04'
+                        ]
+                    ],
+                    'steps' => [
+                        [
+                            'checkout'
+                        ],
+                        [
+                            'run' => [
+                                'name' => 'Install CURL',
+                                'command' => 'apt update && apt install curl -y'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
         ];
     }
 }
