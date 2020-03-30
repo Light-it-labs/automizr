@@ -10,10 +10,10 @@ interface StepContract
 {
     /**
      * Adds a command to the current step
-     * @param string $command
+     * @param array $command
      * @return Step
      */
-    public function command(string $command): Step;
+    public function command(array $command): Step;
 
     /**
      * Adds a set of commands to the current instance

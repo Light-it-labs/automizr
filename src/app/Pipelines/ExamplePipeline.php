@@ -25,13 +25,23 @@ class ExamplePipeline extends Automizr
     {
         $this->examplePipeline = $this->pipeline('Continuous Integration - Delivery Pipeline')
             ->job('clone_repository', function(Step $step) {
-                $step->command('git clone https://github.com/test.git');
-                $step->command('echo Hello World');
+                $step->command([
+                    'name' => 'git_clone',
+                    'command' => 'git clone https://github.com/test.git'
+                ]);
+
+                $step->command([
+                    'name' => 'Say Hello',
+                    'command' => 'echo Hello World'
+                ]);
 
                 return $step->recipe();
             }, 'ubuntu:18.04')
             ->job('install_dependencies', function (Step $step) {
-                $step->command('npm install');
+                $step->command([
+                    'name' => 'npm_install',
+                    'command' => 'npm install'
+                ]);
 
                 return $step->recipe();
             }, 'ubuntu:18.04');

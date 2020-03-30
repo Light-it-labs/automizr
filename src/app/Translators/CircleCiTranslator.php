@@ -5,6 +5,7 @@ namespace Lightit\Automizr\Translators;
 
 use Lightit\Automizr\Job;
 use Lightit\Automizr\Pipeline;
+use Lightit\Automizr\Step;
 
 /**
  * Transforms an Automizr pipeline into a CircleCi compatible pipeline
@@ -56,12 +57,19 @@ class CircleCiTranslator extends BaseTranslator
                 // Create steps key
                 $jobs[$job->name()]['steps'] = [];
             }
+           $steps = [];
+           foreach ($job->steps() as $step) {
+               /** @var Step $step */
+               $steps =  [
+                   'run' => [
+                       'name' => $step['name'],
+                       'command' => $step['command']
+                   ]
+               ];
+           }
             array_push($jobs[$job->name()]['steps'], [
-                'checkout' => [],
-                'run' => [
-                    'name' => 'Install CURL',
-                    'command' => 'apt update && apt install curl -y'
-                ]
+                'checkout',
+                $steps
             ]);
         }
 

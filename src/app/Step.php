@@ -14,7 +14,7 @@ class Step implements StepContract
     /**
      * @inheritDoc
      */
-    public function command(string $command): Step
+    public function command(array $command): Step
     {
         array_push($this->commands, $command);
 
