@@ -9,6 +9,7 @@ You can install this package via composer
 ## Usage
 Create a new Pipeline class extending Lightit\Automizr\Automizr class:
 
+Example Pipeline:
 ```php
 class ExamplePipeline extends Automizr
 {
@@ -59,6 +60,58 @@ class ExamplePipeline extends Automizr
     }
 }
 ```
+
+Cool, now that you have your pipeline class is easy to transform the result into any of the compatible CI services.
+The classes that performs these transformations are called `Translators` and by concept, gets all the object definitions
+of the `Pipeline` and generates CI compatible string.
+
+``$translator = new CircleCiTranslator($pipeline->instance()); // Transform your pipeline to a CircleCi compatible instance``
+
+To get the yml from the translator, call the ``generate()`` method
+
+``$translator->generate()``
+
+And that's it! This will output your circleCI compatible `.yml`
+
+## Available API
+The main goal of this API is to provide a predictable and easy to use Pipeline designer oriented syntax.
+
+Here is a list of the methods provided by the package that will allow you to create a service agnostic pipeline.
+
+#### Methods
+`$pipeline = $this->automizr->pipeline(string $name)`
+Creates a new Pipeline class instance
+
+---
+`/** @var Piline $pipeline **/`
+
+`$pipeline->job(string $name, Closure $closure, string $dockerImageName)`
+
+This method defines a new pipeline job. The second parameter is a callback function that receive and object of the class `Step`
+
+---
+
+`/** @var Step $step **/`
+
+`$step->command(array $command)` this method allows you to define a Step command. The array must
+contain a `name` and a `command` keys as following:
+
+``
+$step->command([
+    'name' => 'Say Hello',
+    'command' => 'echo Hello World'
+]);
+``
+
+---
+
+## Project TODOS:
+
+- Create more Translators
+
+- Allow parallel Jobs
+
+- Use global docker images
 
 ## About Lightit
 [Light-it](https://lightit.io) is a digital product development studio with offices in the US, Uruguay and Paraguay.
