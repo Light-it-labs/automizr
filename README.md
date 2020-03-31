@@ -83,7 +83,7 @@ Here is a list of the methods provided by the package that will allow you to cre
 Creates a new Pipeline class instance
 
 ---
-`/** @var Piline $pipeline **/`
+`/** @var Pipeline $pipeline **/`
 
 `$pipeline->job(string $name, Closure $closure, string $dockerImageName)`
 
@@ -113,7 +113,7 @@ $step->command([
 
 - Use global docker images
 
-## About Lightit
+## About Light-it
 [Light-it](https://lightit.io) is a digital product development studio with offices in the US, Uruguay and Paraguay.
 
 <img src="https://avatars1.githubusercontent.com/u/39625568?s=200&v=4" width="48">
